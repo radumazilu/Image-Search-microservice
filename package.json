@@ -12,6 +12,7 @@
     "bing-search": "0.0.1",
     "bing.search": "^1.0.1",
     "express": "^4.13.4",
+    "jade": "^1.11.0",
     "mongo": "^0.1.0",
     "mongoose": "^4.4.19",
     "node-bing-api": "^2.4.1"

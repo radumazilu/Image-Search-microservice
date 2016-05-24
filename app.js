@@ -10,8 +10,7 @@ require("dotenv").config({
     silent: true
 });
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.use(express.static(__dirname + '/views'));
 
 // -- Mongoose configuration --
 var mongoose = require('mongoose');
@@ -29,6 +28,7 @@ mongoose.connect(mongouri);
 
 // routes(app);
 api(app, History);
+routes(app);
 
 var PORT = process.env.PORT || 3000;
 
