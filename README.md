@@ -1,2 +1,2 @@
-# Image-Search-microservice
-Image search api on Free Code Camp: https://www.freecodecamp.com/challenges/image-search-abstraction-layer
+# Image-Search-Abstraction-API
+A project in the Free Code Camp Curriculum: https://www.freecodecamp.com/challenges/image-search-abstraction-layer
