@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/views'));
 // -- Mongoose configuration --
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongouri = process.env.MONGO_URI || "mongodb://localhost:27017/img-search"
+var mongouri = process.env.MONGOLAB_URI || "mongodb://localhost:27017/img-search"
 
 var history = new Schema({
   term: String,
