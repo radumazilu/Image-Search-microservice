@@ -3,7 +3,7 @@ var search = new Search(process.env.API_KEY);
 
 module.exports = function(app, History) {
   // Display History
-  app.route('/api/latest')
+  app.route('/latest')
     .get(function(req, res) {
       History.find({}, null, {
         "limit": 10,
