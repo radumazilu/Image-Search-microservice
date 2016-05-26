@@ -1,36 +1,37 @@
 var Search = require('bing-search');
 var search = new Search(process.env.API_KEY);
 
-module.exports = function(app, historyDb) {
+module.exports = function(app, History) {
   // Display History
-  app.get('/latest', function(req, res) {
-    historyDb.find({}, null, {
-      "limit": 10,
-      "sort": {
-        "date": -1
-      }
-    }, (err, doc) => {
-      if(err) return console.log(err);
-      console.log(doc);
-      res.send(doc.map(function(el) {
-        return {
-          term: el.term,
-          date: el.date
-        };
-      }));
+  app.route('/api/latest')
+    .get(function(req, res) {
+      History.find({}, null, {
+        "limit": 10,
+        "sort": {
+          "date": -1
+        }
+      }, (err, doc) => {
+        if(err) return console.log(err);
+        console.log(doc);
+        res.send(doc.map(function(el) {
+          return {
+            term: el.term,
+            date: el.date
+          };
+        }));
+      });
     });
-  });
 
   app.get('/api/imagesearch/:search', (req, res) => {
       var query = req.params.search;
-      var size = (req.query.offset || 2);
+      var size = (req.query.offset || 10);
       var term = decodeURIComponent(query);
 
       // Search Hystory
       var searchHistory = {
           "term": term,
           "date": new Date().toLocaleString()
-      }
+      };
       save(searchHistory);
       search.search({
           query: term,
@@ -56,10 +57,10 @@ module.exports = function(app, historyDb) {
 
   // Save a new object into the DB
   function save(historyObj) {
-    var history = new historyDb(historyObj);
-    history.save(function(err, history) {
-      if(err) throw err;
-      console.log('Saved ' + history);
+    var history = new History(historyObj);
+    history.save(function(err, obj) {
+      if(err) console.log(err);
+      console.log('Saved ' + obj);
     })
   }
 }

@@ -1,0 +1,51 @@
+doctype html
+html(lang='en')
+    head
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+        meta(charset='UTF-8')
+        title Image Search Microservice
+    body
+        .container
+            h1.header API Basejump: Image Search Microservice
+            p
+                | By radumazilu |
+                a(href='https://github.com/radumazilu') See it on GitHub
+            blockquote
+                | User Stories:
+                ol
+                    li
+                        | I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+                    li I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+                    li
+                        | I can get a list of the most recently submitted search strings by requesting /latest.
+            h2 Example usage:
+            ul
+                li
+                    code https://radumazilu-image-search.herokuapp.com/api/imagesearch/taco
+                    br
+                li
+                    code https://radumazilu-image-search.herokuapp.com/latest
+            h2 Example output:
+            ul
+                li
+                    code
+                        | [{
+                        br
+                        |           &quot;url&quot;:&quot;http://www.captainfussybuckets.com/wp-content/uploads/2012/10/BeefTacoCrispy-copy.png&quot;,
+                        br
+                        |           &quot;snippet&quot;:&quot;October 4th is National Taco Day...Free Tacos at Taco Bueno!&quot;,
+                        br
+                        |           &quot;thumbnail&quot;:&quot;http://ts2.mm.bing.net/th?id=OIP.M4ef9467e6a135fa9d5abd0b6a5264713H0&amp;pid=15.1&quot;,
+                        br
+                        |           &quot;context&quot;:&quot;www.captainfussybuckets.com/2012/10/october-4th-is-national-taco...&quot;
+                        br
+                        |         }]
+                li
+                    code
+                        | [{
+                        br
+                        |           &quot;term&quot;:&quot;taco&quot;,
+                        br
+                        |           &quot;date&quot;:&quot;5/24/2016, 10:47:06 PM&quot;
+                        br
+                        |         }]

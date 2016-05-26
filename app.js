@@ -1,22 +1,21 @@
 var express = require("express");
-var mongoose = require("mongoose");
 var path = require("path");
 var http = require("http");
 var url = require("url");
-// var routes = require("./app/routes/routes.js");
+var routes = require("./app/routes/routes.js");
 var api = require("./app/api/image-search.js");
 var app = express();
 require("dotenv").config({
     silent: true
 });
 
-app.use(express.static(__dirname + '/views'));
+app.set("views", path.join(__dirname + '/views'));
 app.set("view engine", "jade");
 
 // -- Mongoose configuration --
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongouri = process.env.MONGOLAB_URI || "mongodb://localhost:27017/img-search"
+var mongouri = "mongodb://localhost:27017/image-search" || process.env.MONGOLAB_URI
 
 var history = new Schema({
   term: String,
@@ -28,7 +27,7 @@ mongoose.connect(mongouri);
 // -- End Mongoose configuration --
 
 api(app, History);
-// routes(app);
+routes(app);
 
 var PORT = process.env.PORT || 3000;
 
