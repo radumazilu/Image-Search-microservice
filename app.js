@@ -15,7 +15,7 @@ app.set("view engine", "jade");
 // -- Mongoose configuration --
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongouri = "mongodb://localhost:27017/image-search" || process.env.MONGOLAB_URI
+var mongouri = process.env.MONGOLAB_URI || "mongodb://localhost:27017/image-search"
 
 var history = new Schema({
   term: String,
