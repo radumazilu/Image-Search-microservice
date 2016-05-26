@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var path = require("path");
 var http = require("http");
 var url = require("url");
-var routes = require("./app/routes/routes.js");
+// var routes = require("./app/routes/routes.js");
 var api = require("./app/api/image-search.js");
 var app = express();
 require("dotenv").config({
@@ -27,9 +27,8 @@ var History = mongoose.model('History', history);
 mongoose.connect(mongouri);
 // -- End Mongoose configuration --
 
-// routes(app);
 api(app, History);
-routes(app);
+// routes(app);
 
 var PORT = process.env.PORT || 3000;
 
