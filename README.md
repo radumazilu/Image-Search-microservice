@@ -19,5 +19,7 @@ See the full stack javascript app at https://radumazilu-image-search.herokuapp.c
 
 
 <h2>Example usage:</h2>
+<ul>
 <code>https://radumazilu-image-search.herokuapp.com/api/imagesearch/taco</code>
 <code>https://radumazilu-image-search.herokuapp.com/latest</code>
+<ul>
