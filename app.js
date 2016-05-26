@@ -11,6 +11,7 @@ require("dotenv").config({
 });
 
 app.use(express.static(__dirname + '/views'));
+app.set("view engine", "jade");
 
 // -- Mongoose configuration --
 var mongoose = require('mongoose');
